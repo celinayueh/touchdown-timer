@@ -87,7 +87,11 @@ function calculateScores(inputRef) {
         const minVal = inputRef.getAttribute("min");
         const maxVal = inputRef.getAttribute("max");
         const defVal = inputRef.getAttribute("placeholder");
-        if (inputRef.value > maxVal || inputRef.value < minVal) {
+
+	var minNum = parseInt(minVal);
+	var maxNum = parseInt(maxVal);
+	    
+        if (parseInt(inputRef.value) > maxNum || parseInt(inputRef.value) < minNum) {
             inputRef.value = defVal;
         }
     }
