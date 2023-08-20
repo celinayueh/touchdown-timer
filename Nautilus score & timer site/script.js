@@ -113,7 +113,7 @@ function calculateScores(inputRef) {
 		score += matchData[i] * scoreKey[i];
 	}
 
-	score = Math.min(score, 0);
+	score = Math.max(score, 0);
 	
 		document.getElementById("finalScore").style.color = "black";
 		document.getElementById("finalScore").innerHTML = "Score: " + score.toString();
