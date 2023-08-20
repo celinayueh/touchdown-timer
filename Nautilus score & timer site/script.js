@@ -112,6 +112,9 @@ function calculateScores(inputRef) {
 	for(let i = 0; i < 9; i++) {
 		score += matchData[i] * scoreKey[i];
 	}
+
+	score = Math.min(score, 0);
+	
 		document.getElementById("finalScore").style.color = "black";
 		document.getElementById("finalScore").innerHTML = "Score: " + score.toString();
 
