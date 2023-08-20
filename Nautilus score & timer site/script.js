@@ -102,7 +102,7 @@ function calculateScores(inputRef) {
     const clam = document.getElementById("clam").value;
     const pearl = document.getElementById("pearl").value;
     const wildlife = document.getElementById("wildlife").value;
-	const scoreKey = [20,5,10,5,5,5,10,10,-5];
+	const scoreKey = [20,5,10,5,5,5,10,10,-3];
 
 	let matchData = [volcano, orangeTile, pipeline, blueTile, purpleTile, turbine, clam, pearl, wildlife];
 	matchData = matchData.map(function (currentElement) {
@@ -113,8 +113,7 @@ function calculateScores(inputRef) {
 		score += matchData[i] * scoreKey[i];
 	}
 
-	score = Math.max(score, 0);
-	
+		score = Math.max(score, 0);
 		document.getElementById("finalScore").style.color = "black";
 		document.getElementById("finalScore").innerHTML = "Score: " + score.toString();
 
