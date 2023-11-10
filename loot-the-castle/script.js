@@ -3,7 +3,6 @@
 // variables
 let timeRemaining = 154; // default time in seconds
 let timerReady = true; // debounce for start button
-let interval; // id for setInterval
 let switchSoundsEnabled = false;
 //audio
 let startSound = new Audio("audio/VEX IQ countdown.mp3");
@@ -16,73 +15,63 @@ let lastCount = new Audio("audio/final countdown.mp3");
 // functions
 
 //Match timer
-let startTime;
-let requestId;
+var interval = 1000; // ms
+var expected = Date.now() + interval;
+let timeoutId;
 
-function timerCount(timestamp) {
-    if (!startTime) {
-        startTime = timestamp;
+function timerCount() {
+    var dt = Date.now() - expected; // the drift (positive for overshooting)
+
+    if ((timeRemaining == 75) && switchSoundsEnabled) {
+        switchSound.play(); // Play switch side sounds
+    }
+    if (timeRemaining <= 1) { // Regular countdown
+        timerStop();
+        timerText.innerHTML = "TIME UP";
+        timerReady = true;
     }
 
-    const elapsedTime = timestamp - startTime;
-
-    if (elapsedTime >= 1000) { // Run the timerCount logic every 1000ms (1 second)
-        startTime = timestamp;
-
-        if (timeRemaining <= 1) {
-            timerStop();
-            timerText.innerHTML = "TIME UP";
-            timerReady = true;
-        }
-
-        if (timeRemaining == 75 && switchSoundsEnabled) {
-            switchSound.play(); // Play switch side sounds
-        }
-
-        timeRemaining -= 1;
-
-        if (timeRemaining <= 150) {
-            if (!timerReady) {
-                timerText.innerHTML = timeRemaining.toString() + " seconds";
-            }
-        }
-
-        if (timeRemaining == 10) {
-            lastCount.play(); // Play end countdown
+    timeRemaining -= 1;
+    if (timeRemaining <= 150) {
+        if (!timerReady) {
+            timerText.innerHTML = timeRemaining.toString() + " seconds";
         }
     }
-
-    if (!timerReady) {
-        requestId = requestAnimationFrame(timerCount);
+    if (timeRemaining == 10) {
+        lastCount.play(); // Play end countdown
     }
+    expected += interval;
+    timeoutId = setTimeout(timerCount, Math.max(0, interval - dt));
 }
 
 function timerStart() {
     if (timerReady) {
         startSound.play();
         timerReady = false;
-        requestId = requestAnimationFrame(timerCount);
+        expected = Date.now() + interval; // Reset the expected time
+        timerCount();
     }
 }
 
 function timerStop() {
     if (!timerReady) {
         timerReady = true;
-        cancelAnimationFrame(requestId);
+        clearTimeout(timeoutId); // stop calling timerCount
     }
 }
 
 function timerReset() {
     timerReady = true;
-    cancelAnimationFrame(requestId);
+    clearTimeout(timeoutId);
     timeRemaining = 154;
-
     if (timeRemaining <= 150) {
         timerText.innerHTML = timeRemaining.toString() + " seconds";
     } else if (timeRemaining >= 150) {
         timerText.innerHTML = "150 seconds";
     }
 }
+
+
 
 function switchCountdown() {
     if (timerReady) {
