@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touchdown</title>
+
+    <script src="script.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="timerContainer" class="matchTimer">
+        <div>
+            <h1>STEM Labs Touchdown</h1>
+            <p id="timerText">60 seconds</p>
+        </div>
+        <div class="buttonContainer">
+            <button id="startBtn" class="timerBtn greenBtn" type="button">Start</button>
+            <button id="stopBtn" class="timerBtn redBtn" type="button">Stop</button>
+            <button id="resetBtn" class="timerBtn blueBtn" type="button">Reset</button>
+        </div>
+        <div class="columnContainer">
+            <button id="countdownSwitch" class="wideBtn whiteBtn" type="button">Enable Sound at Halfway</button>
+            <button id="scoreSwitch" class="wideBtn whiteBtn" type="button">Score Calculator</button>
+        </div>
+    </div>
+    <div id="scoreContainer" class="scoreTracker">
+        <h1>Touchdown Score Calculator</h1>
+        <h2 class="red">Red Team</h2>
+        <div class="inputContainer">
+            <div>
+                <section class="inputSection">
+                    <div>
+                        <label for="one-point-r">Blocks in 1 point zone / </label>
+                        <label for="one-point-r-plus">Blocks in plus zone</label>
+                    </div>
+                </section>
+                <section class="inputSection">
+                    <div>
+                        <label for="two-point-r">Blocks in 2 point zone / </label>
+                        <label for="two-point-r-plus">Blocks in plus zone</label>
+                    </div>
+                </section>
+                <section class="inputSection">
+                    <div>
+                        <label for="three-point-r">Blocks in 3 point zone / </label>
+                        <label for="three-point-r-plus">Blocks in plus zone</label>
+                    </div>
+                </section>
+                    <section class="inputSection">
+                    <div>
+                        <label for="four-point-r">Blocks in 4 point zone / </label>
+                        <label for="four-point-r-plus">Blocks in plus zone</label>
+                    </div>
+                </section>
+            </div>
+            <div class="inputValueHolder">
+                <div class="point-group" id="1">
+                    <input type="number" id="one-point-r" class="inputValue" placeholder="" min="0" max="20">
+                    <input type="number" id="one-point-r-plus" class="inputValue purple" placeholder="" min="0" max="4">
+                </div>
+                <div class="point-group" id="2">
+                    <input type="number" id="two-point-r" class="inputValue" placeholder="" min="0" max="20">
+                    <input type="number" id="two-point-r-plus" class="inputValue purple" placeholder="" min="0" max="4">
+                </div>
+                <div class="point-group" id="3">
+                    <input type="number" id="three-point-r" class="inputValue" placeholder="" min="0" max="20">
+                    <input type="number" id="three-point-r-plus" class="inputValue purple" placeholder="" min="0" max="4">
+                </div>
+                <div class="point-group" id="4">
+                    <input type="number" id="four-point-r" class="inputValue" placeholder="" min="0" max="20">
+                    <input type="number" id="four-point-r-plus" class="inputValue purple" placeholder="" min="0" max="4">
+                </div>
+            </div>
+        </div>
+        <br>
+        <h2 class="blue">Blue Team</h2>
+        <div class="inputContainer">
+            <div>
+                <section class="inputSection">
+                    <div>
+                        <label for="one-point-b">Blocks in 1 point zone / </label>
+                        <label for="one-point-b-plus">Blocks in plus zone</label>
+                    </div>
+                </section>
+                <section class="inputSection">
+                    <div>
+                        <label for="two-point-b">Blocks in 2 point zone / </label>
+                        <label for="two-point-b-plus">Blocks in plus zone</label>
+                    </div>
+                </section>
+                <section class="inputSection">
+                    <div>
+                        <label for="three-point-b">Blocks in 3 point zone / </label>
+                        <label for="three-point-b-plus">Blocks in plus zone</label>
+                    </div>
+                </section>
+                    <section class="inputSection">
+                    <div>
+                        <label for="four-point-b">Blocks in 4 point zone / </label>
+                        <label for="four-point-b-plus">Blocks in plus zone</label>
+                    </div>
+                </section>
+            </div><div class="inputValueHolder">
+                <div class="point-group">
+                    <input type="number" id="one-point-b" class="inputValue" placeholder="" min="0" max="20">
+                    <input type="number" id="one-point-b-plus" class="inputValue purple" placeholder="" min="0" max="4">
+                </div>
+                <div class="point-group">
+                    <input type="number" id="two-point-b" class="inputValue" placeholder="" min="0" max="20">
+                    <input type="number" id="two-point-b-plus" class="inputValue purple" placeholder="" min="0" max="4">
+                </div>
+                <div class="point-group">
+                    <input type="number" id="three-point-b" class="inputValue" placeholder="" min="0" max="20">
+                    <input type="number" id="three-point-b-plus" class="inputValue purple" placeholder="" min="0" max="4">
+                </div>
+                <div class="point-group">
+                    <input type="number" id="four-point-b" class="inputValue" placeholder="" min="0" max="20">
+                    <input type="number" id="four-point-b-plus" class="inputValue purple" placeholder="" min="0" max="4">
+                </div>
+            </div>
+        </div>
+        <br>
+        <h1 class="red" id="finalScoreRed">Red Team Score: 0</h1>
+        <h1 class="blue" id="finalScoreBlue">Blue Team Score: 0</h1>
+        <br>
+        <div class="columnContainer">
+            <button id="clearBtn" class="wideBtn redBtn" type="button">Clear Fields</button>
+            <button id="timerSwitch" class="wideBtn whiteBtn" type="button">Match Timer</button>
+        </div>
+    </div>
+    <div id="logo">
+        <img src="Images/STEM%20Space%204%20Kids%201%20JPG.jpg" class="logo">
+
+    </div>
+</body>
+</html>

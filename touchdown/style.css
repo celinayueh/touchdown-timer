@@ -175,8 +175,27 @@ p {
     color:#000;
 }
 
+.purple {
+    background: purple;
+    border: 0.2px solid purple;
+    color:white;
+}
+
 img.logo {
     margin-top: 10px;
     width: 200px;
     height: auto;
+}
+
+.point-group{
+    display: flex;
+    justify-content: space-between;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
 }
