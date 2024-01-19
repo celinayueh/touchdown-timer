@@ -199,3 +199,9 @@ img.logo {
 .blue {
     color: blue;
 }
+
+.green {
+    background: yellowgreen;
+    border: 0.2px solid yellowgreen;
+    color:black;
+}
