@@ -1,7 +1,7 @@
 // awesome sauce
 
 // variables
-let timeRemaining = 154; // default time in seconds
+let timeRemaining = 64; // default time in seconds
 let timerReady = true; // debounce for start button
 let switchSoundsEnabled = false;
 //audio
