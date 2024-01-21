@@ -22,7 +22,7 @@ let timeoutId;
 function timerCount() {
     var dt = Date.now() - expected;
 
-    if ((timeRemaining == 32) && switchSoundsEnabled) {
+    if (((timeRemaining == 35) || (timeRemaining == 25)) && switchSoundsEnabled) {
         switchSound.play(); // Play switch side sounds
     }
     if (timeRemaining <= 1) { // Regular countdown
